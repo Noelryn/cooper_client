@@ -28,7 +28,7 @@ describe("HomePage", () => {
       homepage = fixture.componentInstance;
     });
   
-    it("should create the home page", () => {
+    it("should create the Home page", () => {
       expect(homepage).toBeTruthy();
       expect(homepage instanceof HomePage).toEqual(true);
     });
