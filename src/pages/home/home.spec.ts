@@ -57,7 +57,7 @@ describe("HomePage", () => {
         expect(homepage.user).toEqual({ distance: 1000, age: 20 });
     });
 
-    it("calculate function should call person provider doAssessment function", injet(
+    it("calculate function should call person provider doAssessment function", inject(
         [PersonProvider],
         person => {
             homepage.user = { age:25, gender: "female", distance: 2500 };

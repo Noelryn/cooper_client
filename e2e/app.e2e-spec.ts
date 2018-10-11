@@ -12,12 +12,6 @@ describe('App', () => {
       page.navigateTo('/');
     });
 
-    it('should have a title saying Ionic App', () => {
-      page.getPageOneTitleText().then(title => {
-        expect(title).toEqual('Ionic App');
-      });
-    });
-
     it('fill in form', () => {
         page.fillInForm(1000, 'Female', 20);
         expect(page.results_card_header()).toContain('Cooper Test Result');
