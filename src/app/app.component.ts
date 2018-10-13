@@ -34,7 +34,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
     ];
-
+    
   }
   loginPopUp() {
     console.log('popup');

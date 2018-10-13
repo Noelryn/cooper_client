@@ -5,6 +5,7 @@ import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { PlatformMock, StatusBarMock, SplashScreenMock, NavControllerMock } from "ionic-mocks";
 import { PersonProvider } from "../../providers/person/person"
+import { Angular2TokenService } from 'angular2-token';
 
 describe("HomePage", () => {
     let homepage;
@@ -21,7 +22,8 @@ describe("HomePage", () => {
           { provide: Platform, useFactory: () => PlatformMock.instance() },
           { provide: StatusBar, useFactory: () => StatusBarMock.instance() },
           { provide: SplashScreen, useFactory: () => SplashScreenMock.instance() },
-          { provide: NavController, useFactory: () => NavControllerMock.instance() }
+          { provide: NavController, useFactory: () => NavControllerMock.instance() },
+          Angular2TokenService,
         ]
       }).compileComponents();
     }));
