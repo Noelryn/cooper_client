@@ -23,15 +23,23 @@ export class MyApp {
   ) {
 
     this._tokenService.init({
-      apiBase: 'https://your-cooper-api.herokuapp.com/api/v1'
+      apiBase: 'https://nr-cooper-api.herokuapp.com/api/v1'
     });
 
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
     ];
+
+    initializeApp() {
+      this.platform.ready().then(() => {  
+        this.statusBar.styleDefault();
+        this.splashScreen.hide();
+      });
+    }
+
+
   }
   loginPopUp() {
     console.log('popup');
@@ -82,18 +90,8 @@ export class MyApp {
     this.currentUser = undefined;
   }
 }
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
-
+  
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 }

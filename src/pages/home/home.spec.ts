@@ -4,9 +4,11 @@ import { IonicModule, Platform, NavController } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { PlatformMock, StatusBarMock, SplashScreenMock, NavControllerMock } from "ionic-mocks";
+import { PersonProvider } from "../../providers/person/person"
 
 describe("HomePage", () => {
     let homepage;
+    let fixture;
   
     beforeEach(async(() => {
       TestBed.configureTestingModule({
@@ -58,17 +60,17 @@ describe("HomePage", () => {
     });
 
     it("calculate function should call person provider doAssessment function", inject(
-        [PersonProvider],
-        person => {
-            homepage.user = { age:25, gender: "female", distance: 2500 };
-            spyOn(person, "doAssessment").and.returnValue("Above average");
-
-            homepage.calculate();
-
-            expect(person.doAssessment).toHaveBeenCalled();
-            expect(person.doAssessment).toHaveBeenCalledWith(2500);
-            expect(person.age).toEqual(25);
-            expect(person.gender).toEqual("female");
-        }
+      [PersonProvider],
+      person => {
+        homepage.user = { age: 25, gender: "female", distance: 2500 };
+        spyOn(person, "doAssessment").and.returnValue("Above average");
+    
+        homepage.calculate();
+    
+        expect(person.doAssessment).toHaveBeenCalled();
+        expect(person.doAssessment).toHaveBeenCalledWith(2500);
+        expect(person.age).toEqual(25);
+        expect(person.gender).toEqual("female");
+      }
     ));
   });
