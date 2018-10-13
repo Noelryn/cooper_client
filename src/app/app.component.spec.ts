@@ -1,8 +1,9 @@
 import { MyApp } from './app.component'
-import { TestBed } from '@angular/core/testing'
+import { TestBed, inject } from '@angular/core/testing'
 import { IonicModule, Platform } from 'ionic-angular';
 import { PlatformMock, StatusBarMock, SplashScreenMock } from 'ionic-mocks'
 import { StatusBar } from '@ionic-native/status-bar';
+
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Http, BaseRequestOptions, RequestMethod } from '@angular/http'
 import { MockBackend } from '@angular/http/testing';
@@ -56,7 +57,7 @@ describe('AppComponent', () => {
       c => {
         expect(c.request.getBody()).toEqual(JSON.stringify(signInData));
         expect(c.request.method).toEqual(RequestMethod.Post);
-        expect(c.request.url).toEqual('https://your-cooper-api.herokuapp.com/api/v1/auth/sign_in');
+        expect(c.request.url).toEqual('https://nr-cooper-api.herokuapp.com/api/v1/auth/sign_in');
       }
     );
     component.login(signInData);
@@ -67,7 +68,7 @@ describe('AppComponent', () => {
     mockBackend.connections.subscribe(
       c => {
         expect(c.request.method).toEqual(RequestMethod.Delete);
-        expect(c.request.url).toEqual('https://your-cooper-api.herokuapp.com/api/v1/auth/sign_out');
+        expect(c.request.url).toEqual('https://nr-cooper-api.herokuapp.com/api/v1/auth/sign_out');
       }
     );
 

@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { HomePage } from '../pages/home/home';
 import { Angular2TokenService } from 'angular2-token';
 
@@ -14,31 +15,25 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
+  currentUser: any;
 
   constructor(
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    private_tokenService: Angular2TokenService
+    public alertCtrl: AlertController,
+    private _tokenService: Angular2TokenService
   ) {
 
     this._tokenService.init({
       apiBase: 'https://nr-cooper-api.herokuapp.com/api/v1'
     });
 
-    this.initializeApp();
+  this.initializeApp();
 
     this.pages = [
       { title: 'Home', component: HomePage },
     ];
-
-    initializeApp() {
-      this.platform.ready().then(() => {  
-        this.statusBar.styleDefault();
-        this.splashScreen.hide();
-      });
-    }
-
 
   }
   loginPopUp() {
@@ -89,7 +84,14 @@ export class MyApp {
       .subscribe(res => console.log(res), err => console.error('error'));
     this.currentUser = undefined;
   }
-}
+
+  initializeApp() {
+    this.platform.ready().then(() => {  
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
+  }
+
   
   openPage(page) {
     this.nav.setRoot(page.component);
